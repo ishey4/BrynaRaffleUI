@@ -7,8 +7,7 @@ export const useTickets = () => {
     const [_tickets, _setTickets] = useState<TTicket[]>([])
     const addTicket = (ticket: TTicket) => { _setTickets([..._tickets, ticket]) }
     const addTickets = (tickets: TTicket[]) => _setTickets([...tickets, ..._tickets])
-
-    const updateTickets = () => getReservedTickets().then(_setTickets)
+    const updateTickets = () => getReservedTickets().then(_setTickets);
 
     useEffect(() => { updateTickets() }, [])
 

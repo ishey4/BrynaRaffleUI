@@ -1,5 +1,5 @@
 //[https://brynaraffle.uc.r.appspot.com
-//export const HOST = 'http://localhost:3001/'
+//export const HOST = 'http://localhost:8080/'
 export const HOST = 'https://brynaraffle.uc.r.appspot.com/'
 export const GET_PUBLISHABLE_KEY = 'getStripePublishableKey'
 export const CREATE_PAYMENT_INTENT = 'createPaymentIntent'

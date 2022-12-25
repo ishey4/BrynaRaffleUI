@@ -48,7 +48,7 @@ function App() {
           {tickets.map((ticket) => <NewTicketComponent ticket={ticket} />)}
           {!BuyNow && <NewTicketComponent ticket={null} />}
 
-          <div className='ButyNow'>
+          <div className='BuyNow'>
             {BuyNow && <PaymentTile />}
             {showPaymentButton && <Button onClick={setBuyNow}>Buy Now (${total})</Button>}
           </div>

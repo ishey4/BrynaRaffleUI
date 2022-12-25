@@ -13,6 +13,7 @@ export const usePaymentButton = () => {
     const { chargeCard } = useChargeCard()
     const [paymentStatus, setPaymentStatus] = useState<string>('')
     const { paymentAmount, tickets, updateTickets } = useContext(AppContext)
+
     const buttonText = !paymentStatus ? `Pay $${paymentAmount}` : paymentStatus
 
     const click = () => {
@@ -20,7 +21,11 @@ export const usePaymentButton = () => {
         stripe?.createToken(elm).then((token) => {
             setPaymentStatus('Processing')
             chargeCard({ ticketIds: tickets.map(({ uid }) => uid), amount: paymentAmount * 100, token: token.token?.id })
-                .then(({ status }) => { updateTickets(); setPaymentStatus(status || 'Error'); console.log('status', { status }) })
+                .then(({ status }) => {
+                    setPaymentStatus(status || 'Error');
+                    setTimeout(updateTickets, 500);
+
+                })
                 .catch(() => { setPaymentStatus("Error") })
         })
     }
