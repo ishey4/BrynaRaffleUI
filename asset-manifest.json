@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/BrynaRaffleUI/static/css/main.77c4dc8a.css",
-    "main.js": "/BrynaRaffleUI/static/js/main.85633368.js",
+    "main.css": "/BrynaRaffleUI/static/css/main.514964e6.css",
+    "main.js": "/BrynaRaffleUI/static/js/main.9903e76b.js",
     "static/js/787.07401c06.chunk.js": "/BrynaRaffleUI/static/js/787.07401c06.chunk.js",
     "index.html": "/BrynaRaffleUI/index.html",
-    "main.77c4dc8a.css.map": "/BrynaRaffleUI/static/css/main.77c4dc8a.css.map",
-    "main.85633368.js.map": "/BrynaRaffleUI/static/js/main.85633368.js.map",
+    "main.514964e6.css.map": "/BrynaRaffleUI/static/css/main.514964e6.css.map",
+    "main.9903e76b.js.map": "/BrynaRaffleUI/static/js/main.9903e76b.js.map",
     "787.07401c06.chunk.js.map": "/BrynaRaffleUI/static/js/787.07401c06.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.77c4dc8a.css",
-    "static/js/main.85633368.js"
+    "static/css/main.514964e6.css",
+    "static/js/main.9903e76b.js"
   ]
 }
