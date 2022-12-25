@@ -1,0 +1,10 @@
+.NewTicketComponent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.NewTicketComponent button {
+    min-width: 75px;
+    margin: 5px
+}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useUserData } from "../Hooks/useUserData";
 import { CEHECK_FOR_RESERVED_TICKETS, HOST } from "./APIEndpoints";
 import { TTicket } from "./types";
@@ -12,12 +12,10 @@ export const checkForTicket = ({ userId, email }: any): Promise<TTicket[]> => {
 
 export const useCheckForTicket = () => {
     const { email, userID } = useUserData();
-    // const [reserverdTickets, setReservedTickets] = useState<TTicket[]>([]);
     const [isLoading, setIsLoading] = useState(true)
 
     const getReservedTickets = () =>
         checkForTicket({ email, userId: userID })
-            // .then(setReservedTickets)
             .finally(() => setIsLoading(false))
 
 

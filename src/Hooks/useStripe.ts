@@ -1,7 +1,6 @@
 import { loadStripe, Stripe } from "@stripe/stripe-js";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useCreateIntent } from "../API/createIntent";
-import { AppContext } from "../AppContext";
 import { useGetStripePublishableKey } from "./useGetStripePublishableKey"
 
 export const useStripe = () => {

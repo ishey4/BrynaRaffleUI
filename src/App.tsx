@@ -3,7 +3,7 @@ import { Button } from 'antd';
 import { Input } from 'antd';
 import Card from 'antd/es/card';
 
-import { PaymentTile } from './PaymentTile';
+import { PaymentTile } from './PaymentTile/PaymentTile';
 import { useUserData } from './Hooks/useUserData';
 import { AppContext } from './AppContext';
 import { NewTicketComponent } from './NewTicket/NewTicket';
@@ -34,10 +34,11 @@ function App() {
     _setBuyNow(true)
   }
 
-  console.log("tickets", { tickets })
+  const contextValue = { updateTickets, getTicket, addTicket, addTickets, tickets, paymentAmount, setPaymentAmount, paymentIntent, setPaymentIntent }
+  const showPaymentButton = total > 0 && tickets.length && !BuyNow
 
   return (
-    <AppContext.Provider value={{ updateTickets, getTicket, addTicket, addTickets, tickets, paymentAmount, setPaymentAmount, paymentIntent, setPaymentIntent }}>
+    <AppContext.Provider value={contextValue}>
       <div className='App'>
         <Card title="Contact Info">
           <Input onChange={(e) => setName(e.target.value)} bordered={false} type='text' placeholder='Name' value={name} />
@@ -46,10 +47,12 @@ function App() {
         <Card title="Ticket Info" bordered={false}>
           {tickets.map((ticket) => <NewTicketComponent ticket={ticket} />)}
           {!BuyNow && <NewTicketComponent ticket={null} />}
-          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+
+          <div className='ButyNow'>
             {BuyNow && <PaymentTile />}
-            {total > 0 && tickets.length && !BuyNow && <Button onClick={setBuyNow}>Buy Now (${total})</Button>}
+            {showPaymentButton && <Button onClick={setBuyNow}>Buy Now (${total})</Button>}
           </div>
+
         </Card>
 
       </div>

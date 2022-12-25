@@ -6,3 +6,8 @@
   width: 80%;
   margin: 5%;
 }
+
+.BuyNow {
+  display: 'flex';
+  justify-content: 'flex-end';
+}

@@ -1,7 +1,6 @@
-import { useContext, useEffect, useState } from "react"
-import { loadStripe, PaymentIntent, Stripe, StripeElementsOptions } from '@stripe/stripe-js';
+import { useEffect, useState } from "react"
+import { PaymentIntent, StripeElementsOptions } from '@stripe/stripe-js';
 import { CREATE_PAYMENT_INTENT, HOST } from "./APIEndpoints";
-import { AppContext } from "../AppContext";
 
 const getIntent = (amount: number) => {
     const body = JSON.stringify({ amount })

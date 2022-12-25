@@ -11,12 +11,10 @@ export const _chargeCard = ({ userId, email, amount, token, ticketIds }: any): P
 
 export const useChargeCard = () => {
     const { email, userID } = useUserData();
-    // const [reserverdTickets, setReservedTickets] = useState<TTicket[]>([]);
     const [isLoading, setIsLoading] = useState(true)
 
     const chargeCard = ({ amount, token, ticketIds }: any) =>
         _chargeCard({ email, userId: userID, amount, token, ticketIds })
-            // .then(setReservedTickets)
             .finally(() => setIsLoading(false))
 
 
