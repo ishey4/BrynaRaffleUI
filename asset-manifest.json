@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/BrynaRaffleUI/static/css/main.b275c7ea.css",
-    "main.js": "/BrynaRaffleUI/static/js/main.0b3064f3.js",
+    "main.css": "/BrynaRaffleUI/static/css/main.521332cb.css",
+    "main.js": "/BrynaRaffleUI/static/js/main.5f3a998d.js",
     "static/js/787.07401c06.chunk.js": "/BrynaRaffleUI/static/js/787.07401c06.chunk.js",
+    "static/media/Brynas-Legacy-Main-Banner-1366-x-360-px.png": "/BrynaRaffleUI/static/media/Brynas-Legacy-Main-Banner-1366-x-360-px.3c2fcc5763c88bafb482.png",
     "index.html": "/BrynaRaffleUI/index.html",
-    "main.b275c7ea.css.map": "/BrynaRaffleUI/static/css/main.b275c7ea.css.map",
-    "main.0b3064f3.js.map": "/BrynaRaffleUI/static/js/main.0b3064f3.js.map",
+    "main.521332cb.css.map": "/BrynaRaffleUI/static/css/main.521332cb.css.map",
+    "main.5f3a998d.js.map": "/BrynaRaffleUI/static/js/main.5f3a998d.js.map",
     "787.07401c06.chunk.js.map": "/BrynaRaffleUI/static/js/787.07401c06.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b275c7ea.css",
-    "static/js/main.0b3064f3.js"
+    "static/css/main.521332cb.css",
+    "static/js/main.5f3a998d.js"
   ]
 }
