@@ -4,5 +4,6 @@ export type TTicket = {
     email: string,
     userId: string,
     reserveDateTime: number,
-    transactionId: string
+    transactionId: string,
+    receipt_url?: string
 }

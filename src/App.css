@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,500;1,100;1,200;1,400&display=swap');
+
 .App {
   display: flex;
   flex-direction: column;
@@ -5,9 +7,55 @@
   position: absolute;
   width: 80%;
   margin: 5%;
+  font-size: 25;
+}
+
+.App span,
+div,
+input {
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  color: #632047;
+}
+
+.field,
+button {
+  margin: 10px;
+}
+
+.fieldContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.fieldContainer.spaceBetween {
+  justify-content: space-between;
+}
+
+h1 {
+  text-align: center;
+}
+
+button {
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+.field {
+  max-width: 300px;
+  display: flex;
 }
 
 .BuyNow {
   display: flex;
   justify-content: flex-end;
+}
+
+.allTickets {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  flex-wrap: wrap;
 }

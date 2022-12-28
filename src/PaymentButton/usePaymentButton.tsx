@@ -15,12 +15,15 @@ export const usePaymentButton = () => {
     const { paymentAmount, tickets, updateTickets } = useContext(AppContext)
 
     const buttonText = !paymentStatus ? `Pay $${paymentAmount}` : paymentStatus
+    const ticketIds = tickets
+        .filter(({ transactionId }) => !transactionId)
+        .map(({ uid }) => uid)
 
     const click = () => {
         const elm = elements?.getElement('card') as StripeCardElement
         stripe?.createToken(elm).then((token) => {
             setPaymentStatus('Processing')
-            chargeCard({ ticketIds: tickets.map(({ uid }) => uid), amount: paymentAmount * 100, token: token.token?.id })
+            chargeCard({ ticketIds, amount: paymentAmount * 100, token: token.token?.id })
                 .then(({ status }) => {
                     setPaymentStatus(status || 'Error');
                     setTimeout(updateTickets, 500);

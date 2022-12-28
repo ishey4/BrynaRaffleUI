@@ -8,8 +8,10 @@ export const PaymentButton = () => {
     const { paymentStatus, click, buttonText } = usePaymentButton()
 
     return <div className="PaymentButton">
-        <CardElement />
-        <Button disabled={!!paymentStatus} onClick={click}>{buttonText}</Button>
+        <div className="CardElement">
+        <CardElement  />
+        </div>
+        <Button className="PayButton" disabled={!!paymentStatus} onClick={click}>{buttonText}</Button>
     </div>
 
 }
