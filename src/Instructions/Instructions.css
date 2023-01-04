@@ -1,0 +1,24 @@
+.instructionTileContainer {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.instructionTile {
+    height: 300px;
+    width: 200px;
+    border: 5px solid #15919F;
+    border-radius: 20px;
+    margin: 20px;
+    text-align: center;
+    padding: 20px;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.instructionTile img {
+    width: auto;
+    height: 30%;
+}

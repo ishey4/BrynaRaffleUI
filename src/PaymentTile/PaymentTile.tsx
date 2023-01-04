@@ -19,7 +19,9 @@ export const PaymentTile = () => {
         }
     }, [])
 
-    return <Elements stripe={stripePromise} options={stripeOptions}>
-        <PaymentButton />
-    </Elements >
+    return !stripeOptions.clientSecret ? null :
+
+        <Elements stripe={stripePromise} options={stripeOptions}>
+            {isLoading ? null : <PaymentButton />}
+        </Elements >
 }

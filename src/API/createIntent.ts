@@ -13,7 +13,6 @@ export const useCreateIntent = () => {
     const [stripeOptions, setStripeOptions] = useState<StripeElementsOptions>({});
     const [isLoading, setIsLoading] = useState(true)
 
-
     const createNewIntent = (amount: number) => {
         setIsLoading(true)
         getIntent(amount)
@@ -21,11 +20,11 @@ export const useCreateIntent = () => {
             .finally(() => setIsLoading(false))
     };
 
-
     useEffect(() => {
         if (paymentIntent) {
             setStripeOptions({
-                clientSecret: paymentIntent?.client_secret || ''
+                clientSecret: paymentIntent?.client_secret || '',
+                appearance: { variables: { fontSizeBase: '20px', fontLineHeight: '35px' } }
             })
         }
     }, [paymentIntent])

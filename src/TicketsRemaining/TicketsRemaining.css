@@ -1,0 +1,26 @@
+.ticketsRemaining {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.ticketsRemaining .counter {
+    font-size: 60px;
+    padding: 0 15px;
+    color: #fff;
+    background: #91165A;
+    border-radius: 25px;
+    margin: 30px 25px;
+    line-height: 130px;
+}
+
+.ticketsRemaining .counter span {
+    padding: 0 55px;
+}
+
+.ticketsRemaining .text {
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+}

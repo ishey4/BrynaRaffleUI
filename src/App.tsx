@@ -1,22 +1,21 @@
-import { Context, useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Button } from 'antd';
 import { Input } from 'antd';
-import Card from 'antd/es/card';
 
+import { PaymentIntent } from '@stripe/stripe-js'
+  ;
 import { PaymentTile } from './PaymentTile/PaymentTile';
 import { useUserData } from './Hooks/useUserData';
-import { AppContext, IAppContext } from './AppContext';
-import { NewTicketComponent } from './NewTicket/NewTicket';
-import { PaymentIntent } from '@stripe/stripe-js';
+import { AppContext } from './AppContext';
 import { useGetTicket } from './API/getTicket';
 import { useTickets } from './Hooks/useTickets';
-
-import banner from './Images/Brynas-Legacy-Main-Banner-1366-x-360-px.png'
-
-// import 'antd/dist/reset.css';
-import './App.css';
 import { RaffleTicket } from './RaffleTicket/RaffleTicket';
-import { TTicket } from './API/types';
+import { Header } from './Header/Header';
+import { SubHeader } from './SubHeader/SubHeader';
+import { Seperator } from './Seperator/Seperator';
+import { TicketsRemaining } from './TicketsRemaining/TicketsRemaining';
+
+import './App.css';
 
 function App() {
   const { getTicket } = useGetTicket()
@@ -26,7 +25,6 @@ function App() {
   const [BuyNow, _setBuyNow] = useState(false)
   const [paymentAmount, setPaymentAmount] = useState<number>(0)
   const [paymentIntent, setPaymentIntent] = useState<PaymentIntent | null>(null)
-
 
   const total = tickets.reduce((acc, ticket) => {
     const ticketPrice = ticket.transactionId ? '0' : ticket.ticketNumber
@@ -39,10 +37,7 @@ function App() {
   }
 
   const contextValue = { updateTickets, getTicket, addTicket, addTickets, tickets, paymentAmount, setPaymentAmount, paymentIntent, setPaymentIntent }
-  const showPaymentButton = total > 0 && tickets.length && !BuyNow
-
   const unpaidTickets = tickets.filter(({ transactionId }) => !transactionId)
-  const paidTickets = tickets.filter(({ transactionId }) => transactionId)
 
   const newTicket = () => {
     getTicket().then(addTicket)
@@ -53,54 +48,32 @@ function App() {
 
   const showGetTicket = !nameStatus && !emailStatus
 
-  const purchasedTicketsByInvoice = paidTickets.reduce((acc, ticket) => {
-    const currentGroup = acc[ticket?.transactionId || ''] || [];
-    const newInvoiceGroup = [...currentGroup, ticket]
-    return { ...acc, [ticket.transactionId]: newInvoiceGroup }
-  }, {} as { [key: string]: TTicket[] })
-
-
   return (
     <AppContext.Provider value={contextValue}>
       <div className='App'>
-        <img src={banner}></img>
-        <h1><strong>Win a Trip! Only 250 Tickets Left, Get yours now!</strong></h1>
-        <div className='fieldContainer spaceBetween'>
-          <div className='fieldContainer'>
-            <Input status={nameStatus} addonBefore="Name" className='name field' onChange={(e) => setName(e.target.value)} type='text' placeholder='Name' value={name} />
-            <Input status={emailStatus} addonBefore="Email" className='email field' type='email' placeholder='Email' onChange={(e) => setEmail(e.target.value)} value={email} />
-          </div>
-          <div className='fieldContainer'>
-            <Button disabled={!showGetTicket} onClick={newTicket}>Get Ticket</Button>
-            <Button disabled={!showGetTicket} onClick={setBuyNow}>Buy Tickets (${total})</Button>
-          </div>
+        <Header />
+        <SubHeader />
+        <Seperator />
+        <TicketsRemaining />
+        <div className='getYoursNow accentBackground'>Get Yours Now</div>
+        <div className='fieldContainer'>
+          <Input status={nameStatus} className='name field' onChange={(e) => setName(e.target.value)} type='text' placeholder='Name' value={name} />
+          <Input status={emailStatus} className='email field' type='email' placeholder='Email' onChange={(e) => setEmail(e.target.value)} value={email} />
         </div>
-        {BuyNow && <PaymentTile />}
-        <div className='allTickets'>
+        <div className='buttonGroup'>
+          <Button className='button' disabled={!showGetTicket} onClick={newTicket}>Get Ticket</Button>
+        </div>
+        <div className='raffleTicketContainer'>
           {unpaidTickets.map((ticket) => <RaffleTicket ticket={ticket} />)}
         </div>
-
-
-        <div>
-          <h2>Purchased Tickets</h2>
-          {Object.entries(purchasedTicketsByInvoice).map(([key, value]) => {
-            return <>
-              <div style={{ display: 'flex', justifyContent: "space-between", alignItems: "baseline" }}>
-                <a target={'_blank'} href={value[0].receipt_url}>Invoice</a>
-                <div className='allTickets' style={{ maxWidth: '50%' }}>
-                  {value.map((ticket) => <RaffleTicket ticket={ticket} />)}
-                </div>
-              </div>
-            </>
-          })}
+        <div className='totalPrice'>Total: ${total}</div>
+        <div className='buttonGroup'>
+          <Button className='button' disabled={!showGetTicket} onClick={setBuyNow}>Pay for Tickets</Button>
         </div>
+        {BuyNow && <PaymentTile />}
       </div>
     </AppContext.Provider>
   );
 }
 
 export default App;
-function useContext(AppContext: Context<IAppContext>): { getTicket: any; addTicket: any; } {
-  throw new Error('Function not implemented.');
-}
-

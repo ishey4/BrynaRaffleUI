@@ -1,10 +1,11 @@
 .ticketContainer {
     position: relative;
     height: 100px;
-    width: 150px;
+    width: 190px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 0 25px;
 }
 
 .ticketContainer .ticket {
@@ -14,5 +15,26 @@
 }
 
 .ticketContainer .ticketNumber {
+    font-size: 55px;
+    color: #15919F;
     z-index: 10;
+    width: 60%;
+    text-align: right;
+}
+
+.ticketArea .cancelButton {
+    font-size: 20px;
+    color: rgba(0, 0, 0, .5);
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.totalPrice {
+    font-size: 40px;
+    color: #000;
+    width: 100%;
+    text-align: center;
+    padding: 25px;
 }

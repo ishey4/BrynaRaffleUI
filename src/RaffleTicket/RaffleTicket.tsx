@@ -7,10 +7,12 @@ export interface IRaffleTicketProps {
     ticket: TTicket | null
 }
 
-
 export const RaffleTicket = ({ ticket }: IRaffleTicketProps) => {
-    return <div className='ticketContainer'>
-        <div className='ticketNumber'>{ticket?.ticketNumber}</div>
-        <img className='ticket' src={raffleTicket}></img>
+    return <div className='ticketArea displayFlex'>
+        <div className='ticketContainer'>
+            <div className='ticketNumber'>{ticket?.ticketNumber}</div>
+            <img className='ticket' src={raffleTicket}></img>
+        </div>
+        <div className='cancelButton'>X Cancel</div>
     </div>
 }

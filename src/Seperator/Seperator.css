@@ -1,0 +1,11 @@
+.seperator {
+    color: #158B9F;
+    font-size: 30px;
+    width: 100%;
+    text-align: center;
+    background: #F5F5F5;
+}
+
+.seperator div {
+    padding: 10px 25px;
+}

@@ -1,61 +1,105 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,500;1,100;1,200;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,500;0,700;1,100;1,200;1,400&display=swap');
+
+body {
+  background-color: #F5F5F5;
+}
+
+#root {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+}
 
 .App {
+  max-width: 1680px;
   display: flex;
   flex-direction: column;
-  height: 80%;
   position: absolute;
   width: 80%;
   margin: 5%;
-  font-size: 25;
+  font-family: 'Montserrat', sans-serif;
+  color: #91165A;
+  background-color: #FFFF;
 }
 
-.App span,
-div,
-input {
-  font-family: Montserrat, sans-serif;
-  font-weight: 400;
+.displayFlex {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 40px;
+  text-align: center;
+  margin: 10px 0;
+}
+
+h2 {
+  color: #FFFF;
+  font-size: 30px;
+  text-align: center;
+  margin: 10px 0;
+}
+
+h3 {
   font-size: 20px;
-  line-height: 30px;
-  color: #632047;
+  text-justify: distribute;
 }
 
-.field,
-button {
-  margin: 10px;
+.accentBackground {
+  background-color: #15919F;
+}
+
+.blackText {
+  color: #000;
+}
+
+strong {
+  color: #91165A;
+}
+
+.getYoursNow {
+  padding: 20px 0;
+  font-size: 50px;
+  color: #FFFF;
+  text-align: center;
+  font-weight: unset;
+  margin: 25px 0;
 }
 
 .fieldContainer {
   display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.fieldContainer input {
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 20px;
+  max-width: 500px;
+  height: 70px;
+  margin: 10px 0;
+}
+
+.buttonGroup {
+  width: 100%;
+  display: flex;
+  margin: 25px 0;
   justify-content: center;
 }
 
-.fieldContainer.spaceBetween {
-  justify-content: space-between;
-}
-
-h1 {
+.button {
+  background: #91165A;
+  height: 95px;
+  width: 535px;
+  font-size: 40px;
+  color: #FFFF;
   text-align: center;
 }
 
-button {
-  display: inline-flex !important;
-  align-items: center !important;
-}
-
-.field {
-  max-width: 300px;
-  display: flex;
-}
-
-.BuyNow {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.allTickets {
+.raffleTicketContainer {
   display: flex;
   justify-content: center;
-  margin: 20px;
   flex-wrap: wrap;
 }
