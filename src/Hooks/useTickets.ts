@@ -5,7 +5,11 @@ import { TTicket } from "../API/types"
 export const useTickets = () => {
     const { getReservedTickets } = useCheckForTicket()
     const [_tickets, _setTickets] = useState<TTicket[]>([])
-    const addTicket = (ticket: TTicket) => { _setTickets([..._tickets, ticket]) }
+    const addTicket = (ticket: TTicket) => {
+        if (ticket.uid) {
+            _setTickets([..._tickets, ticket])
+        }
+    }
     const addTickets = (tickets: TTicket[]) => _setTickets([...tickets, ..._tickets])
     const updateTickets = () => getReservedTickets().then(_setTickets);
 

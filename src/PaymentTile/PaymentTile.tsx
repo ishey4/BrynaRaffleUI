@@ -35,6 +35,7 @@ export const PaymentTile = () => {
     const isValidCVC = /^[0-9]{3,4}$/.test(card.cvc);
     const isValidExp = /^(0[1-9]|1[0-2])\/[0-9]{4}$/.test(exp);
     const disablePaymentButton = isLoading || !isValidCVC || !isCardValid || !isValidExp;
+    const unpaidTickets = tickets.filter(({ transactionId }) => !transactionId)
 
     return <>
         {shouldShowPayButton && <div className='fieldContainer'>
@@ -52,7 +53,7 @@ export const PaymentTile = () => {
                         exp_month: parseInt(getMonth(exp)),
                         exp_year: parseInt(getYear(exp))
                     }
-                    chargeCard({ amount: paymentAmount * 100, card: cartToUse, tickets })
+                    chargeCard({ amount: paymentAmount * 100, card: cartToUse, tickets: unpaidTickets })
                 }}>Pay ${paymentAmount}</Button></div>
 
         </div >}

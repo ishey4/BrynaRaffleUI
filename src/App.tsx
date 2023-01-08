@@ -27,7 +27,7 @@ function App() {
   const [paymentIntent, setPaymentIntent] = useState<PaymentIntent | null>(null)
 
   const total = tickets.reduce((acc, ticket) => {
-    const ticketPrice = ticket.transactionId ? '0' : ticket.ticketNumber
+    const ticketPrice = ticket.transactionId ? '0' : ticket.ticketNumber || '0'
     return acc + parseInt(ticketPrice) || 0
   }, 0)
 
