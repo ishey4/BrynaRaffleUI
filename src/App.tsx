@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from 'antd';
 import { Input } from 'antd';
 
@@ -18,7 +18,7 @@ import { TicketsRemaining } from './TicketsRemaining/TicketsRemaining';
 import './App.css';
 
 function App() {
-  const { getTicket } = useGetTicket()
+  const { getTicket, isLoading } = useGetTicket()
   const { tickets, addTicket, addTickets, updateTickets } = useTickets()
   const { name, email, setName, setEmail } = useUserData()
 
@@ -31,17 +31,17 @@ function App() {
     return acc + parseInt(ticketPrice) || 0
   }, 0)
 
-  const setBuyNow = () => {
-    setPaymentAmount(total)
-    _setBuyNow(true)
-  }
-
   const contextValue = { updateTickets, getTicket, addTicket, addTickets, tickets, paymentAmount, setPaymentAmount, paymentIntent, setPaymentIntent }
   const unpaidTickets = tickets.filter(({ transactionId }) => !transactionId)
 
   const newTicket = () => {
-    getTicket().then(addTicket)
+    getTicket()
+      .then(addTicket)
   }
+
+  useEffect(() => {
+    setPaymentAmount(total)
+  }, [total])
 
   const nameStatus = !name ? "error" : ''
   const emailStatus = (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) ? '' : 'error'
@@ -61,16 +61,13 @@ function App() {
           <Input status={emailStatus} className='email field' type='email' placeholder='Email' onChange={(e) => setEmail(e.target.value)} value={email} />
         </div>
         <div className='buttonGroup'>
-          <Button className='button' disabled={!showGetTicket} onClick={newTicket}>Get Ticket</Button>
+          <Button className='button' loading={isLoading} disabled={!showGetTicket} onClick={newTicket}>Get Ticket</Button>
         </div>
-        <div className='raffleTicketContainer'>
+        {showGetTicket && <><div className='raffleTicketContainer'>
           {unpaidTickets.map((ticket) => <RaffleTicket ticket={ticket} />)}
         </div>
-        <div className='totalPrice'>Total: ${total}</div>
-        <div className='buttonGroup'>
-          <Button className='button' disabled={!showGetTicket} onClick={setBuyNow}>Pay for Tickets</Button>
-        </div>
-        {BuyNow && <PaymentTile />}
+          <div className='totalPrice'>Total: ${total}</div>
+          <PaymentTile /></>}
       </div>
     </AppContext.Provider>
   );

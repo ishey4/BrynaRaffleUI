@@ -12,10 +12,12 @@ export const getTicket = ({ userId, email }: any): Promise<TTicket> => {
 
 export const useGetTicket = () => {
     const { email, userID } = useUserData();
-    const [isLoading, setIsLoading] = useState(true)
+    const [isLoading, setIsLoading] = useState(false)
 
-    const _getTicket = () => getTicket({ email, userId: userID })
-        .finally(() => setIsLoading(false))
+    const _getTicket = () => {
+        setIsLoading(true);
+        return getTicket({ email, userId: userID }).finally(() => setIsLoading(false))
+    }
 
     return { getTicket: _getTicket, isLoading }
 }
