@@ -54,7 +54,7 @@ function App() {
         <Header />
         <SubHeader />
         <Seperator />
-        <TicketsRemaining />
+        {/* <TicketsRemaining /> */}
         <div className='getYoursNow accentBackground'>Get Yours Now</div>
         <div className='fieldContainer'>
           <Input status={nameStatus} className='name field' onChange={(e) => setName(e.target.value)} type='text' placeholder='Name' value={name} />
